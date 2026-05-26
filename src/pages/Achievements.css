@@ -4,7 +4,7 @@
   padding: 15px;
   border-radius: 8px;
   margin-top: 20px;
-  border-left: 3px solid #ff6600;
+  border-left: 3px solid #ffffff;
 }
 
 .achievement-stats p {
@@ -13,7 +13,7 @@
 }
 
 .achievement-stats strong {
-  color: #ff6600;
+  color: #ffffff;
 }
 
 .total-stats {
@@ -46,7 +46,7 @@
 }
 
 .stat-value {
-  color: #ff6600;
+  color: #ffffff;
   font-weight: 800;
   font-size: 1.2rem;
 }

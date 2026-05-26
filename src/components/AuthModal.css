@@ -10,6 +10,7 @@
   justify-content: center;
   align-items: center;
   z-index: 9999;
+  -webkit-backdrop-filter:blur(3px);
   backdrop-filter: blur(3px);
 }
 
@@ -20,7 +21,7 @@
   width: 90%;
   max-width: 450px;
   position: relative;
-  border: 2px solid #ff6600;
+  border: 2px solid #ffffff;
   box-shadow: 0 10px 30px rgba(255, 102, 0, 0.3);
 }
 
@@ -30,7 +31,7 @@
   right: 15px;
   background: none;
   border: none;
-  color: #ff6600;
+  color: #ffffff;
   font-size: 28px;
   cursor: pointer;
   width: 30px;
@@ -48,7 +49,7 @@
 }
 
 .modal-content h2 {
-  color: #ff6600;
+  color: #ffffff;
   margin-top: 0;
   margin-bottom: 25px;
   text-align: center;
@@ -85,7 +86,7 @@
 
 .form-group input:focus {
   outline: none;
-  border-color: #ff6600;
+  border-color: #ffffff;
   box-shadow: 0 0 0 3px rgba(255, 102, 0, 0.1);
 }
 
@@ -108,7 +109,7 @@
 }
 
 .password-requirements p {
-  color: #ff6600;
+  color: #ffffff;
   font-weight: 600;
   margin: 0 0 8px 0;
   font-size: 0.9rem;
@@ -131,7 +132,7 @@
 }
 
 .submit-btn {
-  background: linear-gradient(to right, #ff6600, #ff8c00);
+  background: linear-gradient(to right, #ffffff, #ff8c00);
   color: #000;
   border: none;
   padding: 14px;
@@ -146,7 +147,7 @@
 }
 
 .submit-btn:hover {
-  background: linear-gradient(to right, #ff8c00, #ff6600);
+  background: linear-gradient(to right, #ffffff, #ffffff);
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(255, 102, 0, 0.4);
 }
@@ -170,7 +171,7 @@
 .switch-btn {
   background: none;
   border: none;
-  color: #ff6600;
+  color: #ffffff;
   cursor: pointer;
   font-weight: 700;
   text-decoration: underline;
@@ -180,7 +181,7 @@
 }
 
 .switch-btn:hover {
-  color: #ff8c00;
+  color: #ffffff;
 }
 
 .demo-credentials {
@@ -232,7 +233,7 @@
 }
 
 .test-account strong {
-  color: #ff6600;
+  color: #ffffff;
 }
 
 .test-account span {

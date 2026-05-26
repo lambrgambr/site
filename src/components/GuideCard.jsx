@@ -34,8 +34,8 @@ const GuideCard = ({ guide, user }) => {
             <span className="difficulty" style={{ backgroundColor: getDifficultyColor(guide.difficulty) }}>
               {getDifficultyText(guide.difficulty)}
             </span>
-            <span className="time">⏱️ {guide.time}</span>
-            <span className="chapter">📖 {guide.chapter}</span>
+            <span className="time">{guide.time}</span>
+            <span className="chapter"> {guide.chapter}</span>
           </div>
         </div>
         <button className="expand-btn">
