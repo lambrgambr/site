@@ -36,4 +36,174 @@
     transform: rotate(360deg);
   }
 }
+/* --- ВЫРАВНИВАНИЕ КОНТЕНТА ПО ЦЕНТРУ --- */
 
+/* Центрируем саму оболочку App, если у неё задана максимальная ширина */
+.App {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    align-items: center; /* Центрирует элементы по горизонтали */
+}
+
+/* Центрируем основное содержимое всех страниц */
+main, 
+.main-content, 
+.home-page, 
+.achievements-page, 
+.guides-page {
+    width: 100%;
+    max-width: 1200px; /* Ограничиваем максимальную ширину, чтобы контент не расползался */
+    margin: 0 auto !important; /* Автоматические отступы слева и справа сдвигают всё в центр */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Если внутри страниц используются сетки (grid) или флексы, центрируем их содержимое */
+.games-grid, 
+.achievements-grid, 
+.guides-grid {
+    justify-content: center !important;
+    margin: 0 auto !important;
+}
+/* --- АНИМАЦИЯ ИКОНОК В ВЫПАДАЮЩЕМ МЕНЮ --- */
+
+/* Задаем базовое плавное состояние для иконок по умолчанию */
+.achievements-dropdown .achievement-icon,
+[class*="dropdown"] .achievement-icon,
+.dropdown-item img {
+    transition: transform 0.2s ease-in-out !important;
+}
+
+/* Эффект при наведении на саму строку (ссылку) */
+.achievements-dropdown .dropdown-item:hover .achievement-icon,
+[class*="dropdown-item"]:hover img,
+.dropdown-item:hover img {
+    /* Сдвигает иконку чуть вправо на 4 пикселя и слегка увеличивает её */
+    transform: translateX(4px) scale(1.1) !important; 
+}
+/* --- ПОЛНОЕ УДАЛЕНИЕ ПЛАТНОГО КОНТЕНТА И ПОДПИСОК --- */
+
+/* 1. Скрываем баннер "Премиум руководства" и блок оплаты 299 руб */
+.premium-overlay,
+.subscribe-banner,
+.subscribe-section,
+div[class*="subscribe"],
+div[class*="premium-info"],
+main > div > font, /* на всякий случай, если текст обернут */
+button:contains("ПОЛУЧИТЬ ДОСТУП"),
+.guides-page > div:first-child { 
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Если блок с ценой имеет специфический класс (как на скрине) */
+.guides-page > div:has(button) {
+    display: none !important;
+}
+
+/* 2. Снимаем блокировку, размытие (blur) и прозрачность с карточек гайдов */
+.guide-card.locked,
+.guide-card.premium,
+[class*="locked"],
+[class*="premium"] {
+    opacity: 1 !important; /* Делаем карточки яркими */
+    filter: none !important; /* Убираем размытие, если оно было */
+    pointer-events: auto !important; /* Делаем кнопки кликабельными */
+}
+
+/* 3. Скрываем иконки замков или восклицательных знаков на карточках */
+.guide-card .lock-icon,
+.guide-card [class*="badge"],
+.guide-card span:contains("PREMIUM"),
+.stat-value:contains("Premium") {
+    display: none !important;
+}
+/* --- УДАЛЕНИЕ КРУЖКОВ И МАРКЕРОВ В НАВИГАЦИИ --- */
+
+/* Убираем дефолтные маркеры списков в шапке */
+header nav ul, 
+header nav li, 
+.main-nav ul, 
+.main-nav li {
+    list-style-type: none !important;
+    list-style: none !important;
+}
+
+/* Если кружки были сделаны через псевдоэлементы ::before или ::after */
+header nav a::before, 
+header nav a::after,
+.nav-link::before,
+.nav-link::after,
+.nav-item-with-dropdown::before {
+    content: none !important;
+    display: none !important;
+}
+/* ---ИСПРАВЛЕННЫЙ ВАРИАНТ ДЛЯ ШАПКИ И КНОПКИ ВОЙТИ --- */
+
+/* ==========================================================================
+   ФИНАЛЬНАЯ ИСПРАВЛЕННАЯ ШАПКА
+   ========================================================================== */
+
+/* 1. Контейнер шапки — растянут на максимум */
+.header-container {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 40px !important;
+    box-sizing: border-box !important;
+    position: relative !important; /* База для абсолютного позиционирования кнопки Войти */
+}
+
+/* Логотип слева */
+.logo {
+    flex-shrink: 0 !important;
+}
+
+/* 2. Навигация — строго по центру экрана */
+.main-nav {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 20px !important;
+    flex-grow: 1 !important;
+    /* Компенсируем ширину левого логотипа, чтобы три кнопки встали идеально по центру монитора */
+    margin-right: 140px !important; 
+}
+
+/* 3. Кнопка ВОЙТИ — прижата к правому краю через абсолютное позиционирование */
+.main-nav .auth-btn,
+.header-container a.auth-btn,
+.header-container button.auth-btn {
+    position: absolute !important;
+    right: 40px !important; /* В самом углу, над боковой панелью */
+    top: 50% !important;
+    transform: translateY(-50%) !important; /* Центровка по вертикали */
+    
+    background: transparent !important;
+    border: none !important;
+    color: #ffffff !important;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 24px !important;
+    text-transform: uppercase;
+    cursor: pointer !important;
+    border-radius: 4px !important;
+    
+    /* Мягкая и плавная анимация ховера как у остальных кнопок */
+    transition: all 0.3s ease-in-out !important; 
+}
+
+/* 4. Плавное наведение на кнопку ВОЙТИ (строгий монохромный стиль) */
+.main-nav .auth-btn:hover,
+.header-container a.auth-btn:hover,
+.header-container button.auth-btn:hover {
+    color: #000000 !important;
+    background-color: #ffffff !important;
+}

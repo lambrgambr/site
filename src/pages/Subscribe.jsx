@@ -1,20 +1,27 @@
 // pages/Subscribe.jsx
-import React from 'react';
+import React, { useEffect } from 'react';
 import SidePanel from '../components/SidePanel';
 import './Subscribe.css';
 
 const Subscribe = ({ user, onUpgrade, onOpenAuthModal }) => {
-  const handleSubscribe = (plan) => {
-    if (onUpgrade(plan)) {
-      // Перенаправление обратно на страницу руководств после успешной оплаты
-      setTimeout(() => {
-        window.location.href = '/guides';
-      }, 1000);
-       
-    } else {
-      // Если пользователь не авторизован, открываем модалку
-      onOpenAuthModal();
+  
+  // ХАК ДЛЯ ДИПЛОМА: Как только страница загружается, она автоматически
+  // делает пользователя премиумом и сразу перенаправляет на руководства.
+  useEffect(() => {
+    if (onUpgrade) {
+      onUpgrade('premium');
     }
+    const timer = setTimeout(() => {
+      window.location.href = '/guides';
+    }, 100);
+    return () => clearTimeout(timer);
+  }, [onUpgrade]);
+
+  const handleSubscribe = (plan) => {
+    if (onUpgrade) {
+      onUpgrade('premium');
+    }
+    window.location.href = '/guides';
   };
 
   return (
@@ -27,8 +34,8 @@ const Subscribe = ({ user, onUpgrade, onOpenAuthModal }) => {
         <div className="subscription-options">
           <div className="subscription-card">
             <div className="card-header">
-              <h3>Premium подписка</h3>
-              <div className="price">299 ₽<span>/месяц</span></div>
+              <h3>Premium подписка активирована</h3>
+              <div className="price">0 ₽<span>/навсегда</span></div>
             </div>
             
             <ul className="features">
@@ -43,14 +50,14 @@ const Subscribe = ({ user, onUpgrade, onOpenAuthModal }) => {
               className="subscribe-btn"
               onClick={() => handleSubscribe('premium')}
             >
-              Оформить подписку
+              Перейти к руководствам
             </button>
           </div>
         </div>
         
         <div className="payment-info">
-          <h3>После оформления подписки:</h3>
-          <p>Вы мгновенно получите доступ ко всем руководствам на странице <a href="/guides">РУКОВОДСТВА</a></p>
+          <h3>Подписка успешно подключена по умолчанию!</h3>
+          <p>Вы получили доступ ко всем руководствам на странице <a href="/guides">РУКОВОДСТВА</a></p>
         </div>
       </main>
       

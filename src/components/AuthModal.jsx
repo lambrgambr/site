@@ -333,7 +333,7 @@ const AuthModal = ({ isOpen, onClose, onLogin }) => {
             </div>
           </div>
           <p className="close-hint">
-            ✨ Форма заблокирована до правильного заполнения
+             Форма заблокирована до правильного заполнения
           </p>
         </div>
       </div>

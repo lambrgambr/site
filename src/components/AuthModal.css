@@ -91,12 +91,12 @@
 }
 
 .form-group input.error {
-  border-color: #ff3333;
+  border-color: #ffffff;
   background: rgba(255, 51, 51, 0.05);
 }
 
 .error-message {
-  color: #ff3333;
+  color: #ffffff;
   font-size: 0.8rem;
   margin-top: 3px;
 }
@@ -132,7 +132,7 @@
 }
 
 .submit-btn {
-  background: linear-gradient(to right, #ffffff, #ff8c00);
+  background: linear-gradient(to right, #ffffff, #ffffff);
   color: #000;
   border: none;
   padding: 14px;

@@ -74,3 +74,79 @@
     font-size: 1.5rem;
   }
 }
+/* ==========================================================================
+   СТИЛИЗАЦИЯ ПЛАШЕК СЛОЖНОСТИ (КАТЕГОРИЙ)
+   ========================================================================== */
+
+/* Общий базовый стиль для всех баннеров категорий */
+.category-banner {
+  display: flex;
+  align-items: center;
+  padding: 16px 24px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 35px 0 20px 0;
+  width: 100%;
+  box-sizing: border-box;
+  background: #1e1e1e; /* Темный благородный фон, как у карточек */
+  border: 1px solid #2d2d2d;
+  color: #ffffff;
+  
+  /* Плавный переход для всех эффектов при наведении */
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+  cursor: default;
+}
+
+/* Эффект легкого всплытия при наведении мыши */
+.category-banner:hover {
+  transform: translateY(-2px);
+  background: #252525; /* Становится чуть светлее */
+}
+
+/* Иконка-маркер (кружок) внутри плашки */
+.category-banner-icon {
+  margin-right: 14px;
+  font-size: 1.2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+/* При наведении кружок внутри слегка увеличивается */
+.category-banner:hover .category-banner-icon {
+  transform: scale(1.2);
+}
+
+
+/* --- УНИКАЛЬНЫЕ ЦВЕТА И СВЕЧЕНИЕ ДЛЯ КАЖДОЙ СЛОЖНОСТИ --- */
+
+/* 1. ЛЕГКИЕ (Мягкий зеленый неон) */
+.category-banner.easy {
+  border-left: 4px solid #2ecc71 !important;
+}
+.category-banner.easy:hover {
+  border-color: #2ecc71;
+  box-shadow: 0 6px 20px rgba(46, 204, 113, 0.15) !important;
+}
+
+/* 2. СРЕДНИЕ (Фирменный оранжевый/желтый неон) */
+.category-banner.medium {
+  border-left: 4px solid #ff6600 !important; /* В тон твоей статистике */
+}
+.category-banner.medium:hover {
+  border-color: #ff6600;
+  box-shadow: 0 6px 20px rgba(255, 102, 0, 0.15) !important;
+}
+
+/* 3. СЛОЖНЫЕ (Агрессивный красный неон) */
+.category-banner.hard {
+  border-left: 4px solid #e74c3c !important;
+}
+.category-banner.hard:hover {
+  border-color: #e74c3c;
+  box-shadow: 0 6px 20px rgba(231, 76, 60, 0.15) !important;
+}

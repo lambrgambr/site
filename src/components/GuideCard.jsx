@@ -38,9 +38,9 @@ const GuideCard = ({ guide, user }) => {
             <span className="chapter"> {guide.chapter}</span>
           </div>
         </div>
-        <button className="expand-btn">
-          {expanded ? '▲' : '▼'}
-        </button>
+        <button className={`expand-btn ${expanded ? 'active' : ''}`}>
+  ❯
+</button>
       </div>
       
       {expanded && (
@@ -65,12 +65,9 @@ const GuideCard = ({ guide, user }) => {
           
           <div className="guide-footer">
             <div className="user-info">
-              <span className="user-avatar">
                 {user?.username?.charAt(0).toUpperCase()}
-              </span>
-              <span>Доступно для: {user?.username}</span>
+              <span>{user?.username}</span>
             </div>
-            <span className="premium-tag">PREMIUM</span>
           </div>
         </div>
       )}

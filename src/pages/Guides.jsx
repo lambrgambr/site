@@ -1,12 +1,11 @@
 // pages/Guides.jsx
 import React from 'react';
 import SidePanel from '../components/SidePanel';
-import PremiumGuidesLock from '../components/PremiumGuidesLock';
 import GuideCard from '../components/GuideCard';
 import './Guides.css';
 
 const Guides = ({ user, onUpgrade, onOpenAuthModal }) => {
-  // 5 готовых руководств для премиум пользователей
+  // 5 готовых руководств для всех пользователей
   const premiumGuides = [
     {
       id: 'microwave',
@@ -117,8 +116,11 @@ const Guides = ({ user, onUpgrade, onOpenAuthModal }) => {
     }
   ];
 
-  // Проверяем доступ пользователя
-  const hasPremiumAccess = user && (user.subscription === 'premium' || user.subscription === 'ultimate');
+  // ХАК ДЛЯ ДИПЛОМА: Доступ всегда разрешен по умолчанию!
+  const hasPremiumAccess = true;
+  
+  // Безопасное имя пользователя, если он еще не вошел в аккаунт
+  const username = user ? user.username : 'Гость';
 
   return (
     <div className="page-container">
@@ -127,38 +129,13 @@ const Guides = ({ user, onUpgrade, onOpenAuthModal }) => {
       <main className="content main-content">
         <h1>Полные руководства по достижениям</h1>
         
-        {hasPremiumAccess ? (
-          <div className="premium-guides-content">
-            <div className="premium-header">
-              <span className="premium-badge-large">PREMIUM</span>
-              <p className="welcome-message">
-                Добро пожаловать, {user.username}! У вас есть доступ ко всем руководствам.
-              </p>
-            </div>
-            
-            <div className="guides-grid">
-              {premiumGuides.map((guide) => (
-                <GuideCard key={guide.id} guide={guide} user={user} />
-              ))}
-            </div>
-            
-            <div className="premium-benefits">
-              <h3> Дополнительные преимущества подписки:</h3>
-              <div className="benefits-list">
-                <div className="benefit">
-                  <span>🔄</span>
-                  <p>Регулярные обновления</p>
-                </div>
-                <div className="benefit">
-                  <span>💬</span>
-                  <p>Поддержка в Discord</p>
-                </div>
-              </div>
-            </div>
+        
+          
+          <div className="guides-grid">
+            {premiumGuides.map((guide) => (
+              <GuideCard key={guide.id} guide={guide} user={user} />
+            ))}
           </div>
-        ) : (
-          <PremiumGuidesLock user={user} onUpgrade={onUpgrade}  onOpenAuthModal={onOpenAuthModal} />
-        )}
       </main>
       
       <SidePanel side="right" />

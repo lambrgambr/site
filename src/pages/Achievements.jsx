@@ -384,11 +384,12 @@ const Achievements = () => {
         <h1>Достижения Black Mesa</h1>
         <p>Полный список всех 50 достижений игры, отсортированных по сложности.</p>
         
+        {/* === КАТЕГОРИЯ: ЛЕГКИЕ === */}
         <section id="easy" className="achievement-section">
-          <h2>
-            <img src="img/img/easy-icon.png" className="difficulty-icon" alt="Легкий уровень" />
+          <div className="category-banner easy">
+            <img src="img/img/easy-icon.png" className="difficulty-icon" alt="Легкий уровень" style={{ marginRight: '12px' }} />
             ЛЕГКИЕ (32 достижения)
-          </h2>
+          </div>
           
           {easyAchievements.map((ach) => (
             <AchievementCard key={ach.id} {...ach} />
@@ -400,11 +401,12 @@ const Achievements = () => {
           </div>
         </section>
 
+        {/* === КАТЕГОРИЯ: СРЕДНИЕ === */}
         <section id="medium" className="achievement-section">
-          <h2>
-            <img src="img/img/medium-icon.png" className="difficulty-icon" alt="Средний уровень" />
+          <div className="category-banner medium">
+            <img src="img/img/medium-icon.png" className="difficulty-icon" alt="Средний уровень" style={{ marginRight: '12px' }} />
             СРЕДНИЕ (15 достижений)
-          </h2>
+          </div>
           
           {mediumAchievements.map((ach) => (
             <AchievementCard key={ach.id} {...ach} />
@@ -416,11 +418,12 @@ const Achievements = () => {
           </div>
         </section>
 
+        {/* === КАТЕГОРИЯ: СЛОЖНЫЕ === */}
         <section id="hard" className="achievement-section">
-          <h2>
-            <img src="img/img/hard-icon.png" className="difficulty-icon" alt="Сложный уровень" />
+          <div className="category-banner hard">
+            <img src="img/img/hard-icon.png" className="difficulty-icon" alt="Сложный уровень" style={{ marginRight: '12px' }} />
             СЛОЖНЫЕ (3 достижения)
-          </h2>
+          </div>
           
           {hardAchievements.map((ach) => (
             <AchievementCard key={ach.id} {...ach} />
@@ -452,9 +455,6 @@ const Achievements = () => {
               <span className="stat-value">3</span>
             </div>
           </div>
-          <p className="completion-tip">
-            💡 <strong>Совет:</strong> Начните с легких достижений, чтобы понять механику и получить преимущества!
-          </p>
         </div>
       </main>
       
