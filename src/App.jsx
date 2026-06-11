@@ -8,6 +8,7 @@ import Guides from './pages/Guides';
 import Subscribe from './pages/Subscribe';
 import Toast from './components/Toast';
 import './App.css';
+import Footer from './components/Footer';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -85,6 +86,7 @@ function App() {
           authModalOpen={authModalOpen}
           setAuthModalOpen={setAuthModalOpen}
           onOpenAuthModal={() => setAuthModalOpen(true)}
+          
         />
         
         {toast && (
@@ -117,9 +119,11 @@ function App() {
                 onUpgrade={handleUpgrade}
                 onOpenAuthModal={() => setAuthModalOpen(true)}
               />
+
             } 
           />
         </Routes>
+        <Footer />
       </div>
     </Router>
   );
